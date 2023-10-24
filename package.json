@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "firebase": "^10.5.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
