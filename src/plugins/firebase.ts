@@ -1,3 +1,4 @@
+import { App } from "vue";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
@@ -12,8 +13,14 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
+const firebase = initializeApp(firebaseConfig);
+const analytics = getAnalytics(firebase);
+const auth = getAuth(firebase);
 
-export { analytics, auth };
+export default {
+  install: (app: App) => {
+    app.provide("firebase", firebase);
+    app.provide("analytics", analytics);
+    app.provide("auth", auth);
+  },
+};

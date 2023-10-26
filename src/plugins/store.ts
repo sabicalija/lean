@@ -1,7 +1,8 @@
 // Inside src/plugins/store.ts
-import { App } from "vue";
-import { User } from "firebase/auth";
+import { App, inject, getCurrentInstance } from "vue";
+import { User, onAuthStateChanged } from "firebase/auth";
 import { createPinia, defineStore } from "pinia";
+import { Auth } from "firebase/auth";
 
 const setupStore = (app: App): void => {
   const pinia = createPinia();
@@ -20,4 +21,23 @@ const useUserStore = defineStore({
   },
 });
 
-export { useUserStore, setupStore };
+const setupAuthStateListener = () => {
+  const auth = inject<Auth>("auth");
+  if (!auth) {
+    throw new Error("Firebase Auth is not provided");
+  }
+  onAuthStateChanged(auth, (user) => {
+    useUserStore().setUser(user);
+  });
+};
+
+export default {
+  useUserStore,
+  install: (app: App): void => {
+    setupStore(app);
+    if (getCurrentInstance()) {
+      // If within a component context
+      setupAuthStateListener();
+    }
+  },
+};
