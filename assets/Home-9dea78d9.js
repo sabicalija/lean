@@ -1,0 +1,1 @@
+import{d as o,_ as c,c as s,o as t,p as a,a as _,b as d}from"./index-979c624f.js";const n=o({name:"Home"});const p=e=>(a("data-v-a5edcc67"),e=e(),_(),e),r={id:"home"},i=p(()=>d("h1",null,"Tracker",-1)),m=[i];function h(e,l,u,f,v,x){return t(),s("div",r,m)}const $=c(n,[["render",h],["__scopeId","data-v-a5edcc67"]]);export{$ as default};

@@ -1,1 +1,0 @@
-import{d as o,_ as t,o as s,c as a,p as _,a as c,b as n}from"./index-92b71872.js";const p=o({name:"Home"});const d=e=>(_("data-v-7333a992"),e=e(),c(),e),r={id:"home"},i=d(()=>n("h1",null,"Welcome to the Tracker App",-1)),m=[i];function h(e,l,u,f,v,x){return s(),a("div",r,m)}const $=t(p,[["render",h],["__scopeId","data-v-7333a992"]]);export{$ as default};

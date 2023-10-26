@@ -1,1 +1,0 @@
-import{d as r,o as c,c as a,b as t,G as u,h as e,i as h,j as n}from"./index-92b71872.js";const _=r({__name:"OAuthButtons",setup(l){const i=()=>{const o=new u;e(n,o)},s=()=>{const o=new h;e(n,o)};return(o,d)=>(c(),a("div",null,[t("button",{onClick:i},"Login with Google"),t("button",{onClick:s},"Login with GitHub")]))}});export{_};
