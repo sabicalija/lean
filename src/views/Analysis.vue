@@ -1,6 +1,6 @@
 <template>
-  <div id="home">
-    <h1>Tracker</h1>
+  <div id="analysis">
+    <h1>Analysis</h1>
   </div>
 </template>
 
@@ -8,12 +8,12 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "Analysis",
 });
 </script>
 
 <style scoped>
-#home {
+#analysis {
   padding: 20px;
 }
 </style>
