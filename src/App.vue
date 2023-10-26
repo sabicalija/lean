@@ -1,34 +1,19 @@
 <template>
-  <div id="app">
-    <header>
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/profile">Profile</router-link>
-        <router-link to="/login">Login</router-link>
-        <router-link to="/register">Register</router-link>
-      </nav>
-    </header>
-    <router-view />
-  </div>
+  <Navbar />
+  <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Navbar from "@/components/Navbar.vue";
 
 export default defineComponent({
   name: "App",
+  components: { Navbar },
 });
 </script>
 
 <style lang="stylus">
 #app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
   text-align center
-  color #2c3e50
-  margin-top 60px
-
-  nav a
-    padding 0 0.2rem
 </style>
