@@ -8,23 +8,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { auth } from "@/plugins/firebase.ts";
-import { ref, onMounted } from "vue";
+<script lang="ts" setup>
+import { ref, onMounted, inject } from "vue";
 import LogoutButton from "@/components/auth/LogoutButton.vue";
+import { Auth, User } from "firebase/auth";
 
-export default {
-  components: {
-    LogoutButton,
-  },
-  setup() {
-    const user = ref(auth.currentUser);
+const auth = inject<Auth>("auth");
+if (!auth) {
+  throw new Error("Firebase Auth is not provided");
+}
 
-    onMounted(() => {
-      // Optional: Fetch additional user info
-    });
+const user = ref<User | null>(auth.currentUser);
 
-    return { user };
-  },
-};
+onMounted(() => {
+  // Optional: Fetch additional user info
+});
 </script>

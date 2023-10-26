@@ -2,24 +2,24 @@
   <button @click="logout">Logout</button>
 </template>
 
-<script lang="ts">
-import { auth } from "@/plugins/firebase.ts";
+<script lang="ts" setup>
+import { inject } from "vue";
 import { useRouter } from "vue-router";
+import { Auth } from "firebase/auth";
 
-export default {
-  setup() {
-    const router = useRouter();
+const router = useRouter();
+const auth = inject<Auth>("auth");
 
-    const logout = async () => {
-      try {
-        await auth.signOut();
-        router.push("/login");
-      } catch (error) {
-        console.error("Logout Failed:", error);
-      }
-    };
+if (!auth) {
+  throw new Error("Firebase Auth is not provided");
+}
 
-    return { logout };
-  },
+const logout = async () => {
+  try {
+    await auth.signOut();
+    router.push("/login");
+  } catch (error) {
+    console.error("Logout Failed:", error);
+  }
 };
 </script>

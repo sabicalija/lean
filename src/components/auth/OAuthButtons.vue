@@ -6,8 +6,14 @@
 </template>
 
 <script lang="ts" setup>
-import { auth } from "@/plugins/firebase.ts";
-import { signInWithRedirect, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { inject } from "vue";
+import { Auth, signInWithRedirect, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+
+const auth = inject<Auth>("auth");
+
+if (!auth) {
+  throw new Error("Firebase Auth is not provided");
+}
 
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
