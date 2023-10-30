@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <h1>Tracker</h1>
+    <h1>Lean</h1>
   </div>
 </template>
 
