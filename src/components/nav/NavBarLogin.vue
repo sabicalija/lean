@@ -27,4 +27,5 @@ const { isAuthenticated } = useAuth(auth);
   font-size inherit
   border unset
   font-family inherit
+  cursor pointer
 </style>
