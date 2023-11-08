@@ -1,0 +1,1 @@
+import{d as o,_ as s,c as t,o as _,p as c,a,b as n}from"./index-fcda8118.js";const d=o({name:"Log"});const p=e=>(c("data-v-97954328"),e=e(),a(),e),r={id:"log"},i=p(()=>n("h1",null,"Log",-1)),l=[i];function u(e,f,h,g,m,v){return _(),t("div",r,l)}const I=s(d,[["render",u],["__scopeId","data-v-97954328"]]);export{I as default};
