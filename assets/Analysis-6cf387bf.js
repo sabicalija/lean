@@ -1,1 +1,0 @@
-import{d as s,_ as o,c as a,o as t,p as c,a as _,b as n}from"./index-11e72aea.js";const d=s({name:"Analysis"});const p=e=>(c("data-v-e746edc8"),e=e(),_(),e),i={id:"analysis"},l=p(()=>n("h1",null,"Analysis",-1)),r=[l];function u(e,f,h,y,m,v){return t(),a("div",i,r)}const A=o(d,[["render",u],["__scopeId","data-v-e746edc8"]]);export{A as default};
