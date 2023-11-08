@@ -44,7 +44,8 @@ const loginWithGithub = () => signInWithPopup(auth, new GithubAuthProvider());
     padding 0.25rem 5rem
     background-color var(--c-bg)
     border-radius 0.3rem
-    shadow var(--shadow-3)
+    box-shadow var(--shadow-1)
     border 1px solid var(--c-border)
     min-width 340px
+    cursor pointer
 </style>

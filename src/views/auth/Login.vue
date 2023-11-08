@@ -52,7 +52,6 @@ const login = async () => {
   border-bottom 1px solid var(--c-border)
   margin 0 0 1rem 0
 .input
-  // width 100%
   display flex
   flex-flow column nowrap
   input
@@ -68,7 +67,8 @@ const login = async () => {
     padding 0.25rem 5rem
     background-color var(--c-bg)
     border-radius 0.3rem
-    shadow var(--shadow-3)
+    box-shadow var(--shadow-2)
     border 1px solid var(--c-border)
     min-width 340px
+    cursor pointer
 </style>
