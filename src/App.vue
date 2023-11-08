@@ -1,19 +1,10 @@
 <template>
-  <Navbar />
+  <NavMenu />
   <router-view />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import Navbar from "@/components/Navbar.vue";
-
-export default defineComponent({
-  name: "App",
-  components: { Navbar },
-});
+<script lang="ts" setup>
+import NavMenu from "@/components/nav/NavMenu.vue";
 </script>
 
-<style lang="stylus">
-#app
-  text-align center
-</style>
+<style lang="stylus"></style>
