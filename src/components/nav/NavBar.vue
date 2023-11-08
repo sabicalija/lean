@@ -4,7 +4,7 @@
       <div class="title">
         <NavBarTitle />
       </div>
-      <div class="content">
+      <div class="content" v-if="showNavBar">
         <NavBarContent />
         <NavBarAppearance />
         <NavBarLogin />
@@ -14,6 +14,8 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
+import { useRouter } from "vue-router";
 import NavBarTitle from "@/components/nav/NavBarTitle.vue";
 import NavBarContent from "@/components/nav/NavBarContent.vue";
 import NavBarAppearance from "@/components/nav/NavBarAppearance.vue";
@@ -26,6 +28,11 @@ defineProps<{
 defineEmits<{
   (e: "toggle-screen"): void;
 }>();
+
+const router = useRouter();
+const showNavBar = computed(() => {
+  return !(router.currentRoute.value.meta.hideNavBar === true);
+});
 </script>
 
 <style lang="stylus">

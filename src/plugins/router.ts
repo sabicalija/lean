@@ -9,7 +9,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => import("@/views/Home.vue"),
-    // meta: { requiresAuth: true },
   },
   {
     path: "/log",
@@ -33,7 +32,7 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () => import("@/views/auth/Login.vue"),
-    meta: { requiresUnauth: true },
+    meta: { requiresUnauth: true, hideNavBar: true },
   },
   {
     path: "/register",
@@ -48,7 +47,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, _from, next) => {
+router.beforeEach(async (to, _from, next) => {
   const auth = inject<Auth>("auth");
   if (!auth) {
     throw new Error("Firebase Auth is not provided");
@@ -57,18 +56,15 @@ router.beforeEach((to, _from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const requiresUnauth = to.matched.some((record) => record.meta.requiresUnauth);
 
-  return new Promise<void>((resolve) => {
-    auth.onAuthStateChanged((user) => {
-      if (requiresAuth && !user) {
-        next("/login");
-      } else if (requiresUnauth && user) {
-        next("/");
-      } else {
-        next();
-      }
-      resolve();
-    });
-  });
+  const user = auth.currentUser;
+
+  if (requiresAuth && !user) {
+    next("/login");
+  } else if (requiresUnauth && user) {
+    next("/");
+  } else {
+    next();
+  }
 });
 
 export default router;
