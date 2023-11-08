@@ -1,1 +1,0 @@
-import{d as o,_ as s,c as t,o as _,p as a,a as c,b as d}from"./index-c161436c.js";const n=o({name:"Home"});const p=e=>(a("data-v-19d28e46"),e=e(),c(),e),r={id:"home"},i=p(()=>d("h1",null,"Lean",-1)),m=[i];function h(e,l,u,f,v,x){return _(),t("div",r,m)}const $=s(n,[["render",h],["__scopeId","data-v-19d28e46"]]);export{$ as default};
