@@ -23,6 +23,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.5.0
     version: 10.5.0(vue@3.3.6)
+  '@vueuse/firebase':
+    specifier: ^10.5.0
+    version: 10.5.0(firebase@10.5.0)(vue@3.3.6)
   firebase:
     specifier: ^10.5.0
     version: 10.5.0
@@ -1002,6 +1005,19 @@ packages:
       '@types/web-bluetooth': 0.0.18
       '@vueuse/metadata': 10.5.0
       '@vueuse/shared': 10.5.0(vue@3.3.6)
+      vue-demi: 0.14.6(vue@3.3.6)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/firebase@10.5.0(firebase@10.5.0)(vue@3.3.6):
+    resolution: {integrity: sha512-Qfm1/0DRplwYWnS06aAvXSYVkYjqZD7UmQiCREtZe92jY5IeNhv/eCtZ1fnh/Vd0zupr4sicYoJv904Mady57w==}
+    peerDependencies:
+      firebase: '>=9.0.0'
+    dependencies:
+      '@vueuse/shared': 10.5.0(vue@3.3.6)
+      firebase: 10.5.0
       vue-demi: 0.14.6(vue@3.3.6)
     transitivePeerDependencies:
       - '@vue/composition-api'
