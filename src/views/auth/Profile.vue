@@ -1,26 +1,27 @@
 <!-- src/views/auth/Profile.vue -->
 <template>
-  <div>
-    <p>Email: {{ user?.email }}</p>
-    <p>Name: {{ user?.displayName }}</p>
-    <!-- other user info -->
-    <LogoutButton />
-  </div>
+  <img :src="user?.providerData[0]?.photoURL || ''" alt="User profile picture" />
+  <ul>
+    <li>E-Mail: {{ user?.email }}</li>
+    <li>Name: {{ user?.displayName }}</li>
+  </ul>
+  <pre>{{ user }}</pre>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, inject } from "vue";
-import LogoutButton from "@/components/auth/LogoutButton.vue";
-import { Auth, User } from "firebase/auth";
+import { inject } from "vue";
+import { Auth } from "firebase/auth";
+import { useAuth } from "@vueuse/firebase";
 
 const auth = inject<Auth>("auth");
 if (!auth) {
   throw new Error("Firebase Auth is not provided");
 }
 
-const user = ref<User | null>(auth.currentUser);
-
-onMounted(() => {
-  // Optional: Fetch additional user info
-});
+const { user } = useAuth(auth);
 </script>
+
+<style lang="stylus" scoped>
+pre
+  margin 1rem
+</style>
