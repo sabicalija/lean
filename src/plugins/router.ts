@@ -47,7 +47,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to, _from, next) => {
+router.beforeEach((to, _from, next) => {
   const auth = inject<Auth>("auth");
   if (!auth) {
     throw new Error("Firebase Auth is not provided");
@@ -56,14 +56,30 @@ router.beforeEach(async (to, _from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const requiresUnauth = to.matched.some((record) => record.meta.requiresUnauth);
 
-  const user = auth.currentUser;
-
-  if (requiresAuth && !user) {
-    next("/login");
-  } else if (requiresUnauth && user) {
-    next("/");
+  // Check if the auth state has been initialized
+  if (auth.currentUser !== null) {
+    // Auth state is already known, proceed with the routing logic
+    if (requiresAuth && !auth.currentUser) {
+      return next("/login");
+    } else if (requiresUnauth && auth.currentUser) {
+      return next("/");
+    } else {
+      return next();
+    }
   } else {
-    next();
+    // Auth state is not initialized yet, set up a listener
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      // Unsubscribe immediately to avoid the listener being called again
+      unsubscribe();
+
+      if (requiresAuth && !user) {
+        next("/login");
+      } else if (requiresUnauth && user) {
+        next("/");
+      } else {
+        next();
+      }
+    });
   }
 });
 
