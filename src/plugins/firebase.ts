@@ -1,6 +1,7 @@
 import { App } from "vue";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -16,11 +17,13 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebase);
 const auth = getAuth(firebase);
+const db = getFirestore(firebase);
 
 export default {
   install: (app: App) => {
     app.provide("firebase", firebase);
     app.provide("analytics", analytics);
     app.provide("auth", auth);
+    app.provide("store", db);
   },
 };
