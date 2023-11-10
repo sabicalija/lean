@@ -79,7 +79,6 @@ const showNavBar = computed(() => {
   align-items center
   height calc(var(--nav-height) - 1px)
   transition background-color 0.5s
-
-.content > *
-  padding 0 0.25rem
+  & > *
+    margin 0 0.75rem
 </style>

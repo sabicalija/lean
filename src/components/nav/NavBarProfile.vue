@@ -22,7 +22,9 @@ button
   background-color var(--c-gutter)
   border inherit
   cursor pointer
-  width 35px
+  padding 0
+  border-radius 50%
+  width 32px
   img
     box-shadow var(--shadow-1)
     border-radius 50%
