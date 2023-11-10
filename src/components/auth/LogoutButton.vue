@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import { inject } from "vue";
-import { Auth } from "firebase/auth";
+import { type Auth } from "firebase/auth";
 const auth = inject<Auth>("auth");
 
 if (!auth) {
